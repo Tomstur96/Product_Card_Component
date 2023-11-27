@@ -1,13 +1,68 @@
 @use "../abstracts" as *;
+@use "flex-group" as utl;
+
+// .container {
+//   --max-width: #{$container-max-width};
+//   --padding: #{size(16)};
+
+//   width: min(var(--max-width), 100% - (var(--padding) * 2));
+//   margin-inline: auto;
+// }
+
+// .container[data-type="wide"] {
+//   --max-width: #{$container-max-width-wide};
+// }
 
 .container {
-  --max-width: #{$container-max-width};
-  --padding: #{size(16)};
+  &--image {
+    width: 300px;
+    & > * {
+      height: 450px;
+      border-radius: 10px 0px 0px 10px;
 
-  width: min(var(--max-width), 100% - (var(--padding) * 2));
-  margin-inline: auto;
+      @include mq(small, $type: max) {
+        content: url("../../assets/images/image-product-mobile.jpg");
+        height: auto;
+        border-radius: 10px 10px 0px 0px;
+      }
+    }
+    @include mq(small, $type: max) {
+      width: 100%;
+    }
+  }
+  &--content {
+    width: 300px;
+    height: 450px;
+    @extend .flex-group;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-inline-start: size(32);
+    border-radius: 0px 10px 10px 0px;
+    @include mq(small, $type: max) {
+      width: 100%;
+      border-radius: 0px 0px 10px 10px;
+    }
+  }
+
+  &--price {
+    @extend .flex-group;
+    justify-content: flex-start;
+    gap: size(19);
+    margin-block-end: size(24);
+  }
 }
 
-.container[data-type="wide"] {
-  --max-width: #{$container-max-width-wide};
+.mobile {
+  &-view {
+    @include mq(small, $type: max) {
+      flex-direction: column;
+    }
+  }
+  &-container {
+    @include mq(small, $type: max) {
+      width: min(calc(100% - 2rem), 65ch);
+      flex-direction: column;
+    }
+  }
 }

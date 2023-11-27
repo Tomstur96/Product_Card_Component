@@ -24,7 +24,14 @@
   <body class="mobile-view | flex-group | bg-primary-500">
     <main class="mobile-container | flex-group">
       <div class="container--image">
-        <img src="/assets/images/image-product-desktop.jpg" alt="" />
+        <picture>
+          <source
+            media="(max-width: 30em)"
+            srcset="/assets/images/image-product-mobile.jpg"
+            sizes=""
+          />
+          <img src="/assets/images/image-product-desktop.jpg" alt="" />
+        </picture>
       </div>
       <div class="container--content | bg-neutral-100">
         <h2 class="heading--h2">Perfume</h2>
